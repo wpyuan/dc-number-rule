@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.github.dc.number.rule.mapper.NumberRuleMapper">
+   <resultMap id="BaseResultMap" type="com.github.dc.number.rule.entity.NumberRule">
+      <id column="ID" jdbcType="VARCHAR" property="id" />
+      <result column="CODE" jdbcType="VARCHAR" property="code" />
+      <result column="DESCRIPTION" jdbcType="VARCHAR" property="description" />
+      <result column="IS_ENABLE" jdbcType="DECIMAL" property="isEnable" />
+      <result column="REMARK" jdbcType="CLOB" property="remark" />
+   </resultMap>
+   <sql id="Base_Column_List">
+         ID, 
+         CODE, 
+         DESCRIPTION, 
+         IS_ENABLE, 
+         REMARK
+   </sql>
+
+</mapper>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.github.dc.number.rule.mapper.NumberRuleDetailMapper">
+   <resultMap id="BaseResultMap" type="com.github.dc.number.rule.entity.NumberRuleDetail">
+      <id column="ID" jdbcType="VARCHAR" property="id" />
+      <result column="HEADER_ID" jdbcType="VARCHAR" property="headerId" />
+      <result column="TYPE" jdbcType="VARCHAR" property="type" />
+      <result column="VALUE" jdbcType="VARCHAR" property="value" />
+      <result column="ORDER_SEQ" jdbcType="DECIMAL" property="orderSeq" />
+      <result column="START_VALUE" jdbcType="DECIMAL" property="startValue" />
+      <result column="STEP" jdbcType="DECIMAL" property="step" />
+      <result column="RESET_TYPE" jdbcType="VARCHAR" property="resetType" />
+      <result column="RESET_HANDLER" jdbcType="VARCHAR" property="resetHandler" />
+      <result column="LAST_RESET_DATE" jdbcType="TIMESTAMP" property="lastResetDate" />
+      <result column="MAX_LENGTH" jdbcType="DECIMAL" property="maxLength" />
+      <result column="FORMATTER" jdbcType="VARCHAR" property="formatter" />
+      <result column="IS_ENABLE" jdbcType="DECIMAL" property="isEnable" />
+   </resultMap>
+   <sql id="Base_Column_List">
+         ${alias}.ID,
+         ${alias}.HEADER_ID,
+         ${alias}.TYPE,
+         ${alias}.VALUE,
+         ${alias}.ORDER_SEQ,
+         ${alias}.START_VALUE,
+         ${alias}.STEP,
+         ${alias}.RESET_TYPE,
+         ${alias}.RESET_HANDLER,
+         ${alias}.LAST_RESET_DATE,
+         ${alias}.MAX_LENGTH,
+         ${alias}.FORMATTER,
+         ${alias}.IS_ENABLE
+   </sql>
+
+</mapper>

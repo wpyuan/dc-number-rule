@@ -1,0 +1,7 @@
+dc:
+  number:
+    cache:
+      # 启用缓存，true or false
+      enable: true
+      # 缓存类型。 默认是no-cache（无缓存）; 或者local（本地），或者redis（已封装第三方），可扩展
+      type: no-cache
