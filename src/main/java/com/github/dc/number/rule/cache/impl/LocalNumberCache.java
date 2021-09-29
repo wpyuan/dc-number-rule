@@ -14,10 +14,8 @@ import com.github.dc.number.rule.mapper.NumberRuleMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.util.Assert;
 import org.springframework.util.CollectionUtils;
 
-import javax.annotation.PreDestroy;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
@@ -97,7 +95,7 @@ public class LocalNumberCache extends AbstractNumberCache {
     }
 
     @Override
-    public NumberRuleDetail getLatestNumberRuleDetailByCache(String code, NumberRuleDetail numberRuleDetail, Map<String, Object> param) {
+    public NumberRuleDetail getLatestNumberRuleDetailByCache(String code, NumberRuleDetail numberRuleDetail, Map<String, String> param) {
         if (NUMBER_CACHE_DATA.containsKey(code)) {
             NumberRuleDTO numberRuleDTO = NUMBER_CACHE_DATA.get(code);
             return numberRuleDTO.getDetails().stream().filter(d -> d.getId().equals(numberRuleDetail.getId())).findFirst().orElse(null);
@@ -106,7 +104,7 @@ public class LocalNumberCache extends AbstractNumberCache {
     }
 
     @Override
-    public void updateCacheWhenReset(String code, NumberRuleDetail numberRuleDetail, Map<String, Object> param) {
+    public void updateCacheWhenReset(String code, NumberRuleDetail numberRuleDetail, Map<String, String> param) {
         for (NumberRuleDetail detailCache : NUMBER_CACHE_DATA.get(code).getDetails()) {
             if (detailCache.getId().equals(numberRuleDetail.getId())) {
                 detailCache = numberRuleDetail;
@@ -131,8 +129,7 @@ public class LocalNumberCache extends AbstractNumberCache {
     }
 
     @Override
-    @PreDestroy
-    public void updateDbByCache() {
+    public void handleCachePersistenceWhenClose() {
         SEQUENCE_CACHE.forEach((id, value) -> {
             // 缓存持久化
             NumberRuleDetail numberRuleDetail = NumberRuleDetail.builder()

@@ -27,7 +27,7 @@ public class RedisNumberCache implements NumberCache {
     }
 
     @Override
-    public String handleSequence(String code, NumberRuleDetail numberRuleDetail, Map<String, Object> param) {
+    public String handleSequence(String code, NumberRuleDetail numberRuleDetail, Map<String, String> param) {
         return null;
     }
 
@@ -37,7 +37,7 @@ public class RedisNumberCache implements NumberCache {
     }
 
     @Override
-    public void updateDbByCache() {
+    public void handleCachePersistenceWhenClose() {
 
     }
 

@@ -1,5 +1,6 @@
-package com.github.dc.number.rule.builder;
+package com.github.dc.number.rule.builder.impl;
 
+import com.github.dc.number.rule.builder.SerialNumberHelper;
 import com.github.dc.number.rule.cache.NumberCacheAdapter;
 import com.github.dc.number.rule.dto.NumberRuleDTO;
 import com.github.dc.number.rule.entity.NumberRuleDetail;
@@ -28,11 +29,11 @@ import java.util.Objects;
 @Component
 @Slf4j
 @AllArgsConstructor
-public class DefaultSerialNumberBuilder implements SerialNumberBuilder {
+public class DefaultSerialNumberHelper implements SerialNumberHelper {
     private final NumberCacheAdapter numberCacheAdapter;
 
     @Override
-    public String exec(String code, Map<String, Object> param) {
+    public String generate(String code, Map<String, String> param) {
         StringBuffer numberBuffer = new StringBuffer();
         // 操作缓存适配器，取编号规则
         NumberRuleDTO numberRuleDTO = numberCacheAdapter.getNumberRule(code);

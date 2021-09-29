@@ -22,5 +22,5 @@ public interface IResetHandler {
      * @param param
      * @return 是否重置
      */
-    boolean isReset(NumberRuleDetail numberRuleDetail, Map<String, Object> param);
+    boolean isReset(NumberRuleDetail numberRuleDetail, Map<String, String> param);
 }

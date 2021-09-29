@@ -39,7 +39,7 @@ public class NoNumberCache extends AbstractNumberCache {
     }
 
     @Override
-    public void updateDbByCache() {
+    public void handleCachePersistenceWhenClose() {
         // no cache
     }
 
@@ -55,13 +55,13 @@ public class NoNumberCache extends AbstractNumberCache {
     }
 
     @Override
-    public NumberRuleDetail getLatestNumberRuleDetailByCache(String code, NumberRuleDetail numberRuleDetail, Map<String, Object> param) {
+    public NumberRuleDetail getLatestNumberRuleDetailByCache(String code, NumberRuleDetail numberRuleDetail, Map<String, String> param) {
         // no cache
         return null;
     }
 
     @Override
-    public void updateCacheWhenReset(String code, NumberRuleDetail numberRuleDetail, Map<String, Object> param) {
+    public void updateCacheWhenReset(String code, NumberRuleDetail numberRuleDetail, Map<String, String> param) {
         // no cache
     }
 

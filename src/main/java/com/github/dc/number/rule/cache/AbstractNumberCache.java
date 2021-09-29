@@ -59,7 +59,7 @@ public abstract class AbstractNumberCache implements NumberCache {
     }
 
     @Override
-    public synchronized String handleSequence(String code, NumberRuleDetail numberRuleDetail, Map<String, Object> param) {
+    public synchronized String handleSequence(String code, NumberRuleDetail numberRuleDetail, Map<String, String> param) {
         String sequence = "";
         // 0、获取最新的numberRuleDetail
         // 0.1 从缓存中取
@@ -120,7 +120,7 @@ public abstract class AbstractNumberCache implements NumberCache {
      * 根据缓存更新数据库
      */
     @Override
-    public abstract void updateDbByCache();
+    public abstract void handleCachePersistenceWhenClose();
 
     /**
      * 根据代码获取缓存中的编号规则头行DTO
@@ -146,16 +146,15 @@ public abstract class AbstractNumberCache implements NumberCache {
      * @param param            调用方传入参数
      * @return 缓存中最新的编号规则明细
      */
-    public abstract NumberRuleDetail getLatestNumberRuleDetailByCache(String code, NumberRuleDetail numberRuleDetail, Map<String, Object> param);
+    public abstract NumberRuleDetail getLatestNumberRuleDetailByCache(String code, NumberRuleDetail numberRuleDetail, Map<String, String> param);
 
     /**
      * 重置时，更新缓存
-     *
-     * @param code             编号规则头代码
+     *  @param code             编号规则头代码
      * @param numberRuleDetail 编号规则明细
      * @param param            调用方传入参数
      */
-    public abstract void updateCacheWhenReset(String code, NumberRuleDetail numberRuleDetail, Map<String, Object> param);
+    public abstract void updateCacheWhenReset(String code, NumberRuleDetail numberRuleDetail, Map<String, String> param);
 
     /**
      * 通过缓存自增序列，保证其原子性

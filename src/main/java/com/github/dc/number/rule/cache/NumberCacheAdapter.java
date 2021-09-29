@@ -64,7 +64,7 @@ public class NumberCacheAdapter implements NumberCache {
     }
 
     @Override
-    public String handleSequence(String code, NumberRuleDetail numberRuleDetail, Map<String, Object> param) {
+    public String handleSequence(String code, NumberRuleDetail numberRuleDetail, Map<String, String> param) {
         if (noCache()) {
             NoNumberCache noNumberCache = ApplicationContextHelper.getBean(NoNumberCache.class);
             return noNumberCache.handleSequence(code, numberRuleDetail, param);
@@ -75,15 +75,15 @@ public class NumberCacheAdapter implements NumberCache {
     }
 
     @Override
-    public void updateDbByCache() {
+    public void handleCachePersistenceWhenClose() {
         if (noCache()) {
             NoNumberCache noNumberCache = ApplicationContextHelper.getBean(NoNumberCache.class);
-            noNumberCache.updateDbByCache();
+            noNumberCache.handleCachePersistenceWhenClose();
             return;
         }
 
         caches.stream().filter(c -> numberRuleProperties.getCache().getType().equals(c.type())).findFirst()
-                .orElseThrow(() -> new NotFoundException("找不到该类型的编号缓存处理器：" + numberRuleProperties.getCache().getType())).updateDbByCache();
+                .orElseThrow(() -> new NotFoundException("找不到该类型的编号缓存处理器：" + numberRuleProperties.getCache().getType())).handleCachePersistenceWhenClose();
     }
 
     /**

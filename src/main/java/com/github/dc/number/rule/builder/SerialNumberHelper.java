@@ -10,7 +10,7 @@ import java.util.Map;
  * @author wangpeiyuan
  * @date 2021/9/24 11:30
  */
-public interface SerialNumberBuilder {
+public interface SerialNumberHelper {
 
     /**
      * 执行构造获取编号
@@ -19,5 +19,5 @@ public interface SerialNumberBuilder {
      * @param param 调用方传参
      * @return 编号
      */
-    String exec(String code, Map<String, Object> param);
+    String generate(String code, Map<String, String> param);
 }

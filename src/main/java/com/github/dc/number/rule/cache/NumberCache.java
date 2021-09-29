@@ -51,12 +51,12 @@ public interface NumberCache {
      * @param param            调用方入参
      * @return 序列值
      */
-    String handleSequence(String code, NumberRuleDetail numberRuleDetail, Map<String, Object> param);
+    String handleSequence(String code, NumberRuleDetail numberRuleDetail, Map<String, String> param);
 
     /**
-     * 根据缓存更新数据库
+     * 在应用关闭时做缓存持久化处理
      */
-    void updateDbByCache();
+    void handleCachePersistenceWhenClose();
 
     /**
      * 判断是否需要重置
@@ -65,7 +65,7 @@ public interface NumberCache {
      * @param param            调用方入参
      * @return 默认false不重置
      */
-    default boolean isReset(NumberRuleDetail numberRuleDetail, Map<String, Object> param) {
+    default boolean isReset(NumberRuleDetail numberRuleDetail, Map<String, String> param) {
         //
         // 1.有客制化逻辑，优先执行
         //===============================================

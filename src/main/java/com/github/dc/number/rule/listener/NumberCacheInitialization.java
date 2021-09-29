@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * <p>
- *     本地缓存初始化
+ * 本地缓存初始化
  * </p>
  *
  * @author wangpeiyuan
@@ -23,7 +23,8 @@ public class NumberCacheInitialization implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        log.debug("-->> 开始加载[编号规则]缓存");
+        //TODO 校正应用编号数据与编号规则序列项数据的一致性
+        log.trace("-->> 开始加载[编号规则]缓存");
         numberCacheAdapter.loadCache();
         log.debug("加载[编号规则]缓存完成");
     }

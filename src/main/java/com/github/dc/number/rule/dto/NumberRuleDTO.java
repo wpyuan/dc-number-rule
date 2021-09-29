@@ -26,6 +26,11 @@ public class NumberRuleDTO implements Serializable {
     private List<NumberRuleDetail> details;
 
     public static NumberRuleDTO toDTO(NumberRule numberRule, List<NumberRuleDetail> details) {
+        if (numberRule == null) {
+            return NumberRuleDTO.builder()
+                    .details(details)
+                    .build();
+        }
         return NumberRuleDTO.builder()
                 .id(numberRule.getId())
                 .code(numberRule.getCode())
