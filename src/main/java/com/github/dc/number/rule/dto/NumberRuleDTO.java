@@ -2,8 +2,11 @@ package com.github.dc.number.rule.dto;
 
 import com.github.dc.number.rule.entity.NumberRule;
 import com.github.dc.number.rule.entity.NumberRuleDetail;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.apache.commons.collections.CollectionUtils;
 
 import java.io.Serializable;
 import java.util.List;
@@ -17,6 +20,8 @@ import java.util.List;
  */
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class NumberRuleDTO implements Serializable {
     private String id;
     private String code;
@@ -26,6 +31,9 @@ public class NumberRuleDTO implements Serializable {
     private List<NumberRuleDetail> details;
 
     public static NumberRuleDTO toDTO(NumberRule numberRule, List<NumberRuleDetail> details) {
+        if (numberRule == null && CollectionUtils.isEmpty(details)) {
+            return null;
+        }
         if (numberRule == null) {
             return NumberRuleDTO.builder()
                     .details(details)

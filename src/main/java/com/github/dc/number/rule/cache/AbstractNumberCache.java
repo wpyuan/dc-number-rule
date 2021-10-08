@@ -92,6 +92,9 @@ public abstract class AbstractNumberCache implements NumberCache {
         } else {
             // 1.2 不需要重置，取下一个值
             numberRuleDetail.setValue(String.valueOf(this.getAndSet(code, numberRuleDetail)));
+            if (numberRuleDetail.getMaxLength() < numberRuleDetail.getValue().length()) {
+                log.error("序列超出最大长度，请调整！编号规则：{}, 明细ID：{}", code, numberRuleDetail.getId());
+            }
         }
 
         sequence = String.format("%0" + numberRuleDetail.getMaxLength() + "d", Long.valueOf(numberRuleDetail.getValue()));

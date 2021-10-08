@@ -9,16 +9,18 @@
     </parent>
     <groupId>com.github.wpyuan</groupId>
     <artifactId>dc-number-rule</artifactId>
-    <version>0.0.2</version>
+    <version>0.2.0</version>
     <name>dc-number-rule</name>
     <description>dc frame number-rule project for Spring Boot</description>
     <properties>
         <java.version>1.8</java.version>
         <mybatis-crud.version>0.5.2</mybatis-crud.version>
         <spring-web.version>5.3.3</spring-web.version>
+        <spring-data-redis.version>2.1.9.RELEASE</spring-data-redis.version>
         <commons-lang3.version>3.12.0</commons-lang3.version>
         <default-code.version>1.3.1</default-code.version>
         <dc-common-base.version>0.1.0</dc-common-base.version>
+        <redisson-spring-boot-starter.version>3.15.6</redisson-spring-boot-starter.version>
     </properties>
     <dependencies>
         <dependency>
@@ -55,6 +57,17 @@
             <artifactId>spring-web</artifactId>
             <version>${spring-web.version}</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-redis</artifactId>
+            <version>${spring-data-redis.version}</version>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.redisson</groupId>
+            <artifactId>redisson-spring-boot-starter</artifactId>
+            <version>${redisson-spring-boot-starter.version}</version>
         </dependency>
     </dependencies>
 
