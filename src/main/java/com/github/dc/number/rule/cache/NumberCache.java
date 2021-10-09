@@ -10,6 +10,7 @@ import org.apache.commons.lang3.ClassUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.DateUtils;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Map;
 
@@ -89,11 +90,26 @@ public interface NumberCache {
         // 2.2 距离上次重置日期，超过设定的重置类型，则需要重置
         switch (SequenceResetType.getType(numberRuleDetail.getResetType())) {
             case Y:
-                return DateUtils.addYears(numberRuleDetail.getLastResetDate(), 1).before(new Date());
+                Calendar cal = Calendar.getInstance();
+                cal.setTime(numberRuleDetail.getLastResetDate());
+                int lastResetYear = cal.get(Calendar.YEAR);
+                cal.setTime(new Date());
+                int currentYear = cal.get(Calendar.YEAR);
+                return currentYear > lastResetYear;
             case M:
-                return DateUtils.addMonths(numberRuleDetail.getLastResetDate(), 1).before(new Date());
+                cal = Calendar.getInstance();
+                cal.setTime(numberRuleDetail.getLastResetDate());
+                int lastResetMonth = cal.get(Calendar.MONTH);
+                cal.setTime(new Date());
+                int currentMonth = cal.get(Calendar.YEAR);
+                return currentMonth > lastResetMonth;
             case D:
-                return DateUtils.addDays(numberRuleDetail.getLastResetDate(), 1).before(new Date());
+                cal = Calendar.getInstance();
+                cal.setTime(numberRuleDetail.getLastResetDate());
+                int lastResetDay = cal.get(Calendar.DAY_OF_YEAR);
+                cal.setTime(new Date());
+                int currentDay = cal.get(Calendar.DAY_OF_YEAR);
+                return currentDay > lastResetDay;
             default:
                 ;
         }

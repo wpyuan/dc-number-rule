@@ -12,10 +12,7 @@ import org.apache.commons.lang3.time.DateFormatUtils;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 
 /**
@@ -41,6 +38,7 @@ public class DefaultSerialNumberHelper implements SerialNumberHelper {
         if (CollectionUtils.isEmpty(numberRuleDetails)) {
             throw new NotFoundException("找不到编号规则数据，检查数据是否存在或者是否启用");
         }
+        numberRuleDetails.sort(Comparator.comparing(NumberRuleDetail::getOrderSeq));
         for (NumberRuleDetail numberRuleDetail : numberRuleDetails) {
             Objects.requireNonNull(numberRuleDetail, "编号规则明细为空，检查数据是否存在或者是否启用");
             switch (NumberRuleType.getType(numberRuleDetail.getType())) {

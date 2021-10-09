@@ -9,7 +9,7 @@
     </parent>
     <groupId>com.github.wpyuan</groupId>
     <artifactId>dc-number-rule</artifactId>
-    <version>0.2.2</version>
+    <version>0.2.3</version>
     <name>dc-number-rule</name>
     <description>dc frame number-rule project for Spring Boot</description>
     <properties>
