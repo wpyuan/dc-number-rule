@@ -58,6 +58,6 @@ comment on column NUMBER_RULE_DETAIL.IS_ENABLE is '是否启用'
 /
 
 create unique index NUMBER_RULE_DETAIL_ORDER_SEQ_U
-    on NUMBER_RULE_DETAIL (ORDER_SEQ)
+    on NUMBER_RULE_DETAIL (HEADER_ID, ORDER_SEQ)
 /
 
