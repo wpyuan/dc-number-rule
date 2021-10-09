@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * <p>
+ *     RedissonClient配置，供redis缓存处理器使用
  * </p>
  *
  * @author wangpeiyuan

@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * <p>
+ *     缓存处理器自动配置，可覆盖加入客制化处理器
  * </p>
  *
  * @author wangpeiyuan

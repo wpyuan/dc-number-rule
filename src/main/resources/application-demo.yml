@@ -5,3 +5,8 @@ dc:
       enable: true
       # 缓存类型。 默认是no-cache（无缓存）; 或者local（本地），或者redis（已封装第三方），可扩展
       type: no-cache
+
+# 当缓存类型是redis时，必须配置spring.redis.*，详见org.springframework.boot.autoconfigure.data.redis.RedisProperties
+spring:
+  redis:
+    url: redis://127.0.0.1:6379
