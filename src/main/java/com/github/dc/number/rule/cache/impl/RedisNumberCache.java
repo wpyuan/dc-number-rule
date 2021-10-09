@@ -55,7 +55,7 @@ public class RedisNumberCache implements NumberCache {
     private NumberRuleMapper numberRuleMapper;
     @Autowired
     private NumberRuleDetailMapper numberRuleDetailMapper;
-    @Autowired
+    @Autowired(required = false)
     private RedissonClient redissonClient;
 
     @Override

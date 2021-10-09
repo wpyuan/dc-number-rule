@@ -4,7 +4,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.redisson.Redisson;
 import org.redisson.api.RedissonClient;
 import org.redisson.config.Config;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.autoconfigure.data.redis.RedisProperties;
@@ -26,7 +25,7 @@ import org.springframework.context.annotation.Configuration;
 )
 public class RedissonClientConfig {
 
-    @Bean
+    @Bean(destroyMethod = "shutdown")
     @ConditionalOnProperty(
             name = {"dc.number.cache.type"},
             havingValue = "redis"
