@@ -30,7 +30,7 @@ public abstract class AbstractNumberCache implements NumberCache {
     /**
      * 缓存类型
      *
-     * @return
+     * @return 设置缓存类型标识
      */
     @Override
     public abstract String type();

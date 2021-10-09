@@ -27,7 +27,7 @@ public interface NumberCache {
     /**
      * 缓存类型
      *
-     * @return
+     * @return 缓存类型标识
      */
     String type();
 
