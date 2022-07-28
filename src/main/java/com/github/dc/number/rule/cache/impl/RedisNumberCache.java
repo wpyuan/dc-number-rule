@@ -125,13 +125,12 @@ public class RedisNumberCache implements NumberCache {
                 //成功
                 return this.customHandleSequence(code, numberRuleDetail, param);
             }
+            return null;
         } catch (InterruptedException e) {
             throw new RuntimeException("redis tryLock error", e);
         } finally {
             lock.writeLock().unlock();
         }
-
-        return null;
     }
 
     private String customHandleSequence(String code, NumberRuleDetail numberRuleDetail, Map<String, String> param) {
