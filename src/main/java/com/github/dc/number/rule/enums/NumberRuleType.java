@@ -4,6 +4,7 @@ package com.github.dc.number.rule.enums;
 import com.github.dc.number.rule.exception.NotFoundException;
 
 import java.util.Arrays;
+import java.util.UUID;
 
 /**
  * <p>
@@ -29,7 +30,11 @@ public enum NumberRuleType {
     /**
      * 日期
      */
-    DATE("date");
+    DATE("date"),
+    /**
+     * uuid
+     */
+    UUID("uuid");
 
     private String value;
 

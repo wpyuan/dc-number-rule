@@ -54,6 +54,9 @@ public class DefaultSerialNumberHelper implements SerialNumberHelper {
                 case SEQ:
                     numberBuffer.append(numberCacheAdapter.handleSequence(code, numberRuleDetail, param));
                     break;
+                case UUID:
+                    numberBuffer.append(UUID.randomUUID().toString());
+                    break;
                 default:
                     log.warn("无对应编号规则类型：{}", numberRuleDetail.getType());
             }
