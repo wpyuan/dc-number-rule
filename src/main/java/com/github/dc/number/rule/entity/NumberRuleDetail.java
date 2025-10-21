@@ -17,7 +17,7 @@ import java.util.Date;
  * @author wpyuan
  * @date 2021-09-26 10:47:00
  */
-@Table(name = "NUMBER_RULE_DETAIL")
+@Table(name = "DC_NUMBER_RULE_DETAIL")
 @Data
 @Builder(toBuilder = true)
 @NoArgsConstructor

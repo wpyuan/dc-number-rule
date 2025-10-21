@@ -1,8 +1,8 @@
-create table number_rule_detail
+create table dc_number_rule_detail
 (
     id              varchar(60)       not null comment '主键'
         primary key,
-    header_id       varchar(60)       null comment '头id，取自number_rule表.id',
+    header_id       varchar(60)       null comment '头id，取自dc_number_rule表.id',
     type            varchar(50)       null comment '类型，sequence：序列；constant：常量；date：日期；variable：变量',
     value           varchar(100)      null comment '值。常量/变量名',
     order_seq       smallint          null comment '此规则在编号组成部分的排序号',

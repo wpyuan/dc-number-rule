@@ -17,7 +17,7 @@ import java.io.Serializable;
  * @author wpyuan
  * @date 2021-09-26 15:18:46
  */
-@Table(name = "NUMBER_RULE")
+@Table(name = "DC_NUMBER_RULE")
 @Data
 @Builder(toBuilder = true)
 @NoArgsConstructor
