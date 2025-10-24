@@ -13,7 +13,7 @@ public interface NumberRuleDetailField {
       */
     String ID = "id";
     /**
-      * 头ID，取自NUMBER_RULE表.ID
+      * 头ID，取自DC_NUMBER_RULE表.ID
       */
     String HEADER_ID = "headerId";
     /**

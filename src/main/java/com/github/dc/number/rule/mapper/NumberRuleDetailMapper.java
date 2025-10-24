@@ -39,9 +39,9 @@ public interface NumberRuleDetailMapper extends DefaultMapper<NumberRuleDetail>,
             @Result(column = "IS_ENABLE", property = "isEnable")
     })
     @Select("select nrd.*\n" +
-            "        from NUMBER_RULE_DETAIL nrd\n" +
+            "        from DC_NUMBER_RULE_DETAIL nrd\n" +
             "        where nrd.HEADER_ID = (\n" +
-            "            select nr.ID from NUMBER_RULE nr where nr.CODE = #{code}\n" +
+            "            select nr.ID from DC_NUMBER_RULE nr where nr.CODE = #{code}\n" +
             "            )\n" +
             "        and nrd.IS_ENABLE = 1")
     List<NumberRuleDetail> getNumberRuleDetails(String code);
@@ -51,7 +51,7 @@ public interface NumberRuleDetailMapper extends DefaultMapper<NumberRuleDetail>,
      * @param id 编号规则明细id
      * @return 编号规则明细值
      */
-    @Select("select value from NUMBER_RULE_DETAIL where ID = #{id}")
+    @Select("select value from DC_NUMBER_RULE_DETAIL where ID = #{id}")
     Long getValue(String id);
 
     /**
@@ -59,7 +59,7 @@ public interface NumberRuleDetailMapper extends DefaultMapper<NumberRuleDetail>,
      * @param numberRuleDetail 编号规则明细
      * @return 影响条数
      */
-    @Update("update NUMBER_RULE_DETAIL\n" +
+    @Update("update DC_NUMBER_RULE_DETAIL\n" +
             "        SET VALUE = VALUE + STEP\n" +
             "        WHERE ID = #{id}")
     int incrementSeqValue(NumberRuleDetail numberRuleDetail);

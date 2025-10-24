@@ -30,7 +30,7 @@ public class NumberRuleDetail implements Serializable {
     @Id(fillMethod = CustomFillIdMethod.UUID)
     private String id;
     /**
-      * 头ID，取自NUMBER_RULE表.ID
+      * 头ID，取自DC_NUMBER_RULE表.ID
       */
     private String headerId;
     /**
