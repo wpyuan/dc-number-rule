@@ -73,11 +73,10 @@
     </dependencies>
 
     <distributionManagement>
-        <!-- https://central.sonatype.org/publish/publish-portal-snapshots/ -->
-        <snapshotRepository>
-            <id>central</id>
-            <url>https://central.sonatype.com/repository/maven-snapshots/</url>
-        </snapshotRepository>
+        <repository>
+            <id>2123028-release-hpD7xI</id>
+            <url>https://packages.aliyun.com/maven/repository/2123028-release-hpD7xI/</url>
+        </repository>
     </distributionManagement>
 
     <build>
@@ -132,35 +131,6 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
-            <!--  配置 sonatype mvn clean deploy后自动release我们的项目到Maven中央仓库-->
-            <plugin>
-                <groupId>org.sonatype.central</groupId>
-                <artifactId>central-publishing-maven-plugin</artifactId>
-                <version>0.8.0</version>
-                <extensions>true</extensions>
-                <configuration>
-                    <publishingServerId>central</publishingServerId>
-                    <autoPublish>true</autoPublish>
-                </configuration>
-            </plugin>
-            <!-- 配置 GPG-->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-gpg-plugin</artifactId>
-                <version>1.6</version>
-                <executions>
-                    <execution>
-                        <id>sign-artifacts</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>sign</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <!--                <configuration>-->
-                <!--                    <skip>true</skip>-->
-                <!--                </configuration>-->
             </plugin>
         </plugins>
     </build>
