@@ -9,7 +9,7 @@
     </parent>
     <groupId>com.github.wpyuan</groupId>
     <artifactId>dc-number-rule</artifactId>
-    <version>0.4.1</version>
+    <version>0.4.2</version>
     <name>dc-number-rule</name>
     <description>dc frame number-rule project for Spring Boot v2.1.X</description>
     <properties>
@@ -38,7 +38,7 @@
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>3.12.0</version>
+            <version>3.18.0</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -65,10 +65,23 @@
             redisson-spring-data-24             2.4.x
             redisson-spring-data-25             2.4.x or 2.5.x
          -->
+        <!-- 3.16.3 -> 3.22.1：CVE-2023-42809（CRITICAL）。
+             本库只用到 Redisson.create() / Config / RedissonClient / RReadWriteLock，
+             不需要 Spring Data Redis 适配器（原来引的 -21 适配器实际没人用，
+             且它面向 SDR 2.1，与 Boot 2.4 的 SDR 2.4 本就不匹配），直接依赖核心库。 -->
         <dependency>
             <groupId>org.redisson</groupId>
-            <artifactId>redisson-spring-data-21</artifactId>
-            <version>3.16.3</version>
+            <artifactId>redisson</artifactId>
+            <version>3.22.1</version>
+        </dependency>
+        <!-- RedisNumberCache 用到 StringRedisTemplate / HashOperations，编译期需要
+             spring-data-redis。原先是靠 redisson-spring-data-21 的传递依赖白嫖来的，
+             现在改成直接依赖核心库，就得自己声明；provided 避免污染下游（下游自带 starter）。 -->
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-redis</artifactId>
+            <version>2.4.2</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 
